@@ -109,6 +109,8 @@ public class EventService {
             toUpdate.setPossibleTimes(dtoIn.possibleTimes);
         }
 
+        this.eventRepository.save(toUpdate);
+
         return EventMapper.toOutputDto(toUpdate);
     }
 

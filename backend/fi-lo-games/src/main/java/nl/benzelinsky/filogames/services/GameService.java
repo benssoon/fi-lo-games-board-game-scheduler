@@ -89,6 +89,8 @@ public class GameService {
         toUpdate.setMinAge(dtoIn.minAge);
         toUpdate.setMaxAge(dtoIn.maxAge);
 
+        this.gameRepository.save(toUpdate);
+
         return GameMapper.toOutputDto(toUpdate);
     }
 

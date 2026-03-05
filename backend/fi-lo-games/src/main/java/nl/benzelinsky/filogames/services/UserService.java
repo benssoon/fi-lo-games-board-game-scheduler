@@ -92,6 +92,8 @@ public class UserService {
         toUpdate.setArea(dtoIn.area);
         toUpdate.setAddress(dtoIn.address);
 
+        this.userRepository.save(toUpdate);
+
         return UserMapper.toShortDto(toUpdate);
     }
 
@@ -119,6 +121,8 @@ public class UserService {
         if (dtoIn.address != null) {
             toUpdate.setAddress(dtoIn.address);
         }
+
+        this.userRepository.save(toUpdate);
 
         return UserMapper.toShortDto(toUpdate);
     }
