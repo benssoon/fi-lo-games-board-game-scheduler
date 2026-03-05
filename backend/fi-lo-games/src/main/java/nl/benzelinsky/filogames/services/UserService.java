@@ -38,7 +38,8 @@ public class UserService {
         userInputDto.password = passwordEncoder.encode(userInputDto.password);
         User newUser = UserMapper.toEntity(userInputDto);
         for (String role : userInputDto.roles) {
-            addRole(newUser.getUsername(), role);
+            final String fullRoleName = "ROLE_" + role.toUpperCase();
+            newUser.addRole(new Role(newUser.getUsername(), fullRoleName));
         }
         this.userRepository.save(newUser);
         return UserMapper.toShortDto(newUser);
