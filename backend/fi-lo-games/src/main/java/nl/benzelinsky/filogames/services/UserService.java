@@ -67,10 +67,11 @@ public class UserService {
     }
 
     public UserOutputDto getUserWithPassword(String username) {
-        return UserMapper.toFullDto(
-                this.userRepository.findById(username)
-                        .orElseThrow(() ->
-                                new UsernameNotFoundException(username)));
+        User user = this.userRepository.findById(username)
+                .orElseThrow(() ->
+                        new UsernameNotFoundException(username));
+        return UserMapper.toFullDto(user);
+
     }
     
     // Update user by username

@@ -205,6 +205,9 @@ public class EventService {
         event.addPlayer(player);
         player.joinEvent(event);
 
+        this.eventRepository.save(event);
+        this.userRepository.save(player);
+
         return EventMapper.toOutputDto(event);
     }
 
@@ -221,6 +224,9 @@ public class EventService {
             }
             event.removePlayer(player);
             player.leaveEvent(event);
+
+            this.eventRepository.save(event);
+            this.userRepository.save(player);
         }
         else {
             // player is not in event
