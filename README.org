@@ -2,12 +2,30 @@
 
 GitHub pagina: https://github.com/benssoon/fi-lo-games-board-game-scheduler
 
+Docker repository front end: https://hub.docker.com/repository/docker/benssoon/fi-lo-games/general
+
+Docker repository back end: forthcoming...
+
 API Documentatie: https://app.swaggerhub.com/apis-docs/benz-2f9/Fi-Lo-Games/1.0.0?view=uiDocs
 
 * Inleiding
 De FiLoGames web-API is gebouwd met de Spring Framework en de frontend applicatie is gebouwd met React. FiLoGames is ontworpen om borspel fans andere lokale fans te vinden en daar evenementen mee te plannen. Zoek makkelijk op bestaande evenementen met een specifiek spel.
 * Benodigdheden (met minimale versienummers)
-** Voor de backend
+** Met Docker
+- Docker
+  + Minimale versie: 29.3.0
+** Zonder Docker
+*** Voor de frontend
+- Node.js
+  + Minimale versie: 22.15.0
+  + Node.js is een runtime environment waarin applicaties die in JavaScript gescreven kunnen draaien.
+- nvm
+  + Minimale versie: 0.40.3
+  + Nvm (Node Version Manager) wordt gebruikt om Node.js te installeren.
+- npm
+  + Minimale versie: 10.9.2
+  + Npm (Node package manager) is de pakketbeheerder voor Node.js en biedt commando's o.a. om de frontend applicatie te draaien.
+*** Voor de backend
 - PostgreSQL
   + Minimale versie: 14.2
   + PostgreSQL is een systeem waarmee een gebruiker databases kunt creëren en beheren.
@@ -23,19 +41,23 @@ De FiLoGames web-API is gebouwd met de Spring Framework en de frontend applicati
 - Postman (Niet verplicht)
   + Minimale versie: 11.72.3
   + Postman is een applicatie waarmee de gebruiker HTTP requests kunt uitvoeren. Dit is vooral handig bij het testen van een web-API, zonder dat er een volledige frontend applicatie gebouwd hoeft te worden. De frontend FiLoGames applicatie kan ook gebruikt worden om de endpoints te triggeren en kan dus in plaats van Postman gebruikt worden.
-** Voor de frontend
-- Node.js
-  + Minimale versie: 22.15.0
-  + Node.js is een runtime environment waarin applicaties die in JavaScript gescreven kunnen draaien.
-- nvm
-  + Minimale versie: 0.40.3
-  + Nvm (Node Version Manager) wordt gebruikt om Node.js te installeren.
-- npm
-  + Minimale versie: 10.9.2
-  + Npm (Node package manager) is de pakketbeheerder voor Node.js en biedt commando's o.a. om de frontend applicatie te draaien.
+
 * Projectstructuur
 Deze applicatie bestaat uit een frontend en een backend applicatie. De frontend applicatie is geschreven in JavaScript en gebouwd met de JavaScript library React. De backend applicatie is geschreven in Java en gebouwd met de Spring Framework.
 * Installatie
+** Met Docker
+1. Clone deze repository naar jouw eigen systeem.
+2. Installeer Docker.
+   - https://www.docker.com/
+   - Onder het knopje "Download Docker Desktop", selecteer jouw OS en volg de aangegeven instructies.
+*** Voor de frontend
+1. Pull de Docker image voor de frontend applicatie.
+   - ~docker pull benssoon/fi-lo-games~
+2. Draai de applicatie met Docker.
+   - ~docker run -p 3000:3000~
+*** Voor de backend
+
+** Zonder Docker
 1. Clone deze repository naar jouw eigen systeem.
 2. Installeer indien nodig PostgreSQL.
    - https://www.postgresql.org/download/

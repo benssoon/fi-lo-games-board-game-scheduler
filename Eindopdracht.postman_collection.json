@@ -1,0 +1,983 @@
+{
+	"info": {
+		"_postman_id": "d063db60-8379-47bd-ac9e-f920ab47572b",
+		"name": "Eindopdracht",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "48296128",
+		"_collection_link": "https://benjamin-zelinsky-1024660.postman.co/workspace/Ben-Zelinsky-(Ben)'s-Workspace~f262d68b-54da-4fb4-8443-fdbf3398592f/collection/48296128-d063db60-8379-47bd-ac9e-f920ab47572b?action=share&source=collection_link&creator=48296128"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"item": [
+				{
+					"name": "Authenticated",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{baseURL}}/authenticated",
+							"host": [
+								"{{baseURL}}"
+							],
+							"path": [
+								"authenticated"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Authenticate",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ben\",\n    \"password\": \"1234\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{authenticate}}",
+							"host": [
+								"{{authenticate}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Create Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjcxMzc1MTYsImV4cCI6MTc2NzIyMzkxNn0.SgleNeIOKD_o270xJ16A-ZtCPObFO-VOoxlmMz1wLt0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Arcs evening\",\n    \"isFull\": false,\n    \"isHostPlaying\": true,\n    \"location\": \"Wijmerts\",\n    \"definitiveTime\": \"2025-12-05T19:30\",\n    \"gameId\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{events}}",
+							"host": [
+								"{{events}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{events}}",
+							"host": [
+								"{{events}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Events with param",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{events}}?gameId=1",
+							"host": [
+								"{{events}}"
+							],
+							"query": [
+								{
+									"key": "gameId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Event By ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{events}}/1",
+							"host": [
+								"{{events}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Event by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjM5MDMxOTQsImV4cCI6MTc2MzkwNjc5NH0.GZagXVFhC1u73jtb02kTs4tOcEdQV2xlykkQcMWtlFw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Board games\",\n    \"location\": \"C14\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{events}}/2",
+							"host": [
+								"{{events}}"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Event by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjcxMzc1MTYsImV4cCI6MTc2NzIyMzkxNn0.SgleNeIOKD_o270xJ16A-ZtCPObFO-VOoxlmMz1wLt0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Game Night\"\n}"
+						},
+						"url": {
+							"raw": "{{events}}/1",
+							"host": [
+								"{{events}}"
+							],
+							"path": [
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Assign Game to Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjM4NDIwNzUsImV4cCI6MTc2Mzg0NTY3NX0.I29pMcWnRsUgJ96onB9ljWvu5b5SZ7UgmwJYxYKPpME",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{events}}/1/game/1",
+							"host": [
+								"{{events}}"
+							],
+							"path": [
+								"1",
+								"game",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add player by username",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjQxODcxNTgsImV4cCI6MTc2NDI3MzU1OH0.oDCCJuDdt7R9FCu56FPXmUTRA3MqNN1F6VKn3nXjXsw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{events}}/2/add-player/ellen",
+							"host": [
+								"{{events}}"
+							],
+							"path": [
+								"2",
+								"add-player",
+								"ellen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Join Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjU0NzI0NjQsImV4cCI6MTc2NTU1ODg2NH0.xPeRpnDBeRmItq3RJ8-cmmfgXSf9cHsuE1F2iAlGEvc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{events}}/1/join",
+							"host": [
+								"{{events}}"
+							],
+							"path": [
+								"1",
+								"join"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Events",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjQxMDQwNzYsImV4cCI6MTc2NDE5MDQ3Nn0.vlczBSfIUl5SnCo94gqDwjSg4hjvJXi2PSNWYf9vq1E",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{events}}/deleteAll",
+							"host": [
+								"{{events}}"
+							],
+							"path": [
+								"deleteAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Remove player by username",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjU5MTk2MzAsImV4cCI6MTc2NjAwNjAzMH0.Uj4iCvCa31pg1axXSKjDhXCC8nogls-X3cu7zcPFw3I",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{events}}/1/remove-player/ellen",
+							"host": [
+								"{{events}}"
+							],
+							"path": [
+								"1",
+								"remove-player",
+								"ellen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Leave Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib2IiLCJpYXQiOjE3NjQxOTM2MTAsImV4cCI6MTc2NDI4MDAxMH0.mpaI6yPpYyAA3oVgf0UGaftd46HUr-mKaaap8AuOEy8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{events}}/2/leave",
+							"host": [
+								"{{events}}"
+							],
+							"path": [
+								"2",
+								"leave"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Close Event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NzAzODg2NzMsImV4cCI6MTc3MDQ3NTA3M30.wSehGzf2lS5SaJm2010c8ct-m_4QBr8vhuRsxtOoeaE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{events}}/1/close",
+							"host": [
+								"{{events}}"
+							],
+							"path": [
+								"1",
+								"close"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Games",
+			"item": [
+				{
+					"name": "New Game",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NzA0MjQ0MzAsImV4cCI6MTc3MDUxMDgzMH0.C1BZ6oours0HGiU36PoLXr5NpbewwnPYnmUFQ-hfooM",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Arcs\",\n    \"minPlayers\": 2,\n    \"maxPlayers\": 4,\n    \"minAge\": 10,\n    \"maxAge\": 99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{games}}",
+							"host": [
+								"{{games}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Game by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{games}}/2",
+							"host": [
+								"{{games}}"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Game by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib2IiLCJpYXQiOjE3NjM5ODk5NzcsImV4cCI6MTc2NDA3NjM3N30.JJVtO9GOlDbTbYOBx65vXNMwmKmRC9Uhy_2p04AYIlc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Arcs\",\n    \"minPlayers\": 3,\n    \"maxPlayers\": 6,\n    \"minAge\": 7,\n    \"maxAge\": 99\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{games}}/2",
+							"host": [
+								"{{games}}"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Game by ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJib2IiLCJpYXQiOjE3NjM5ODk5NzcsImV4cCI6MTc2NDA3NjM3N30.JJVtO9GOlDbTbYOBx65vXNMwmKmRC9Uhy_2p04AYIlc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{games}}/4",
+							"host": [
+								"{{games}}"
+							],
+							"path": [
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{games}}",
+							"host": [
+								"{{games}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "All Games with param",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{games}}?title=Arcs",
+							"host": [
+								"{{games}}"
+							],
+							"query": [
+								{
+									"key": "title",
+									"value": "Arcs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Game and its Events",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "Game Stats",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NzA0MjUyODIsImV4cCI6MTc3MDUxMTY4Mn0.iDaXsC6BkRU0OIxz5MEHsanrxYDQ1pCl3iD8rTf91HY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{games}}/1/stats",
+							"host": [
+								"{{games}}"
+							],
+							"path": [
+								"1",
+								"stats"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "All Users",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"jojoboi\",\n    \"name\": \"John\",\n    \"emailAddress\": \"j.john@test.none\",\n    \"telephoneNumber\": \"+31612345679\"\n}"
+						},
+						"url": {
+							"raw": "{{users}}",
+							"host": [
+								"{{users}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User By username",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3Njk3MjE1MTEsImV4cCI6MTc2OTgwNzkxMX0.c7OjAlBePCjZo7a5b3L4JcBEz2S2d1V53RV5hCLSxU4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{users}}/ellen",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"ellen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "New User (Registration)",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"jojoboi\",\n    \"password\": \"1234\",\n    \"name\": \"John\",\n    \"emailAddress\": \"j.john@test.none\",\n    \"telephoneNumber\": \"+31612345679\",\n    \"roles\": [\"admin\"]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{users}}",
+							"host": [
+								"{{users}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User by username",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJlbGxlbiIsImlhdCI6MTc2NzEzNTU2NCwiZXhwIjoxNzY3MjIxOTY0fQ.4fgRm8I7hs9CaV6gFPTZI7hTLeVzjc1bb-elc6XRdds",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"ellen\",\n    \"password\": \"abcd\",\n    \"name\": \"Ricky\",\n    \"emailAddress\": \"gervais@notadomain.noway\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{users}}/ellen",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"ellen"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update User by username",
+					"request": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Ricky\",\n    \"emailAddress\": \"gervais@notadomain.noway\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{users}}/2",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User by username",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjcxMzc1MTYsImV4cCI6MTc2NzIyMzkxNn0.SgleNeIOKD_o270xJ16A-ZtCPObFO-VOoxlmMz1wLt0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{users}}/ben",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"ben"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Roles",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjcxMzQxNzEsImV4cCI6MTc2NzIyMDU3MX0.fUJfYF85bDCO65wZOtJWeDX9xWjZ7mqL2GyhbBOlStA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{users}}/ben/roles",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"ben",
+								"roles"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add User Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3Njc1NjE1MjMsImV4cCI6MTc2NzY0NzkyM30.gFOrXzGJSJZgGuRgPXrXh5iyT5Aej0S4oqCmsAAETqk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{users}}/ben/roles?roleName=test",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"ben",
+								"roles"
+							],
+							"query": [
+								{
+									"key": "roleName",
+									"value": "test"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Role",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3NjcxMzc1MTYsImV4cCI6MTc2NzIyMzkxNn0.SgleNeIOKD_o270xJ16A-ZtCPObFO-VOoxlmMz1wLt0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{users}}/ben/roles/admin",
+							"host": [
+								"{{users}}"
+							],
+							"path": [
+								"ben",
+								"roles",
+								"admin"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Images",
+			"item": [
+				{
+					"name": "Upload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiZW4iLCJpYXQiOjE3Njk1MTAzOTcsImV4cCI6MTc2OTU5Njc5N30.FrYkzjzASBvabN3AkokaRj1ZMBlR93j3gOdpr76vfWU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/home/ben/Dropbox/novi/eindopdracht/test.png"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{images}}/upload",
+							"host": [
+								"{{images}}"
+							],
+							"path": [
+								"upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Image",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{images}}/profilePicture.png?username=ben",
+							"host": [
+								"{{images}}"
+							],
+							"path": [
+								"profilePicture.png"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "ben"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"requests": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "events",
+			"value": ""
+		},
+		{
+			"key": "users",
+			"value": ""
+		},
+		{
+			"key": "games",
+			"value": ""
+		},
+		{
+			"key": "authenticate",
+			"value": ""
+		},
+		{
+			"key": "images",
+			"value": ""
+		}
+	]
+}
