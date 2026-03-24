@@ -1,6 +1,9 @@
 package nl.benzelinsky.filogames.controllers;
 
 import com.jayway.jsonpath.JsonPath;
+import jakarta.transaction.Transactional;
+import nl.benzelinsky.filogames.models.Event;
+import nl.benzelinsky.filogames.models.User;
 import nl.benzelinsky.filogames.repositories.EventRepository;
 import nl.benzelinsky.filogames.repositories.GameRepository;
 import nl.benzelinsky.filogames.repositories.UserRepository;
@@ -19,6 +22,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.matchesPattern;
@@ -66,15 +70,17 @@ class EventControllerIntegrationTest {
                 .andExpect(MockMvcResultMatchers.status().isCreated())
                 .andReturn();
 
-        Integer expected = 2;
-        Integer createdId = JsonPath.read(result.getResponse().getContentAsString(), "$.id");
+        Number id = JsonPath.read(result.getResponse().getContentAsString(), "$.id");
+        Long createdId = id.longValue();
 
-        assertEquals(expected, createdId);
+        assertNotNull(createdId);
+        assertEquals("Root night", eventRepository.findById(createdId).orElseThrow().getName());
         assertThat(result.getResponse().getHeader("Location"), matchesPattern(".*/events/" + createdId));
     }
 
     @Test
-    @DisplayName("Should add player with username test to event with ID 1")
+    @Transactional
+    @DisplayName("Should add player with username test_user to event with ID 1")
     void testAddPlayer() throws Exception {
         String username = "test_user";
         Long eventId = 1L;
@@ -83,8 +89,10 @@ class EventControllerIntegrationTest {
                 .perform(MockMvcRequestBuilders.post("/events/" + eventId + "/add-player/" + username))
                 .andExpect(MockMvcResultMatchers.status().isOk())
                 .andReturn();
+        User testUser = userRepository.findById(username).orElseThrow();
 
         List<Object> players = JsonPath.read(result.getResponse().getContentAsString(), "$.players");
         assertTrue(players.contains(username));
+        assertTrue(eventRepository.findById(eventId).orElseThrow().getPlayers().contains(testUser));
     }
 }
