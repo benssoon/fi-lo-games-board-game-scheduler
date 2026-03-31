@@ -54,7 +54,7 @@ Deze applicatie bestaat uit een frontend en een backend applicatie. De frontend 
 1. Pull de Docker image voor de frontend applicatie.
    - ~docker pull benssoon/fi-lo-games~
 2. Draai de applicatie met Docker.
-   - ~docker run -p 3000:3000~
+   - ~docker run -p 3000:3000 benssoon/fi-lo-games~
 *** Voor de backend
 
 ** Zonder Docker
