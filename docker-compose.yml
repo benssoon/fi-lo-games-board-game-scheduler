@@ -1,0 +1,29 @@
+services:
+  fi-lo-games-api:
+    image: 'fi-lo-games-api:latest'
+    build:
+      context: .
+    container_name: fi-lo-games-api
+    depends_on:
+      - db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:postgresql://db:5432/fi-lo-games
+      - SPRING_DATASOURCE_USERNAME=postgres
+      - SPRING_DATASOURCE_PASSWORD=postgres
+      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+      - FILO_IMAGES=/app/image-uploads
+    ports:
+      - "8080:8080"
+
+  db:
+    image: 'postgres:14.22-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=compose-postgres
+      - POSTGRES_PASSWORD=compose-postgres
+
+  fi-lo-games-frontend:
+    image: 'fi-lo-games-frontend:latest'
+    build:
+      context: ../../frontend
+    container_name: fi-lo-games-frontend
