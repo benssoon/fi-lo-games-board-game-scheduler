@@ -2,19 +2,31 @@
 
 GitHub pagina: https://github.com/benssoon/fi-lo-games-board-game-scheduler
 
-Docker repository front end: https://hub.docker.com/repository/docker/benssoon/fi-lo-games/general
+Docker repository front end: https://hub.docker.com/repository/docker/benssoon/fi-lo-games-frontend/general
 
-Docker repository back end: forthcoming...
+Docker repository back end: https://hub.docker.com/repository/docker/benssoon/fi-lo-games-backend/general
 
 API Documentatie: https://app.swaggerhub.com/apis-docs/benz-2f9/Fi-Lo-Games/1.0.0?view=uiDocs
 
+* TOC
+- [[*Inleiding][Inleiding]]
+- [[*Benodigdheden (met minimale versienummers)][Benodigdheden (met minimale versienummers)]]
+  + [[*Bij gebruik van Docker][Bij gebruik van Docker]]
+  + [[*Bij gebruik zonder Docker][Bij gebruik zonder Docker]]
+- [[*Projectstructuur][Projectstructuur]]
+- [[*Installatie][Installatie]]
+  + [[*Met Docker][Met Docker]]
+  + [[*Zonder Docker][Zonder Docker]]
+- [[*Overige Informatie][Overige Informatie]]
+  + [[Tests][Tests]]
+  + [[Standaardgebruikers][Standaardgebruikers]]
 * Inleiding
 De FiLoGames web-API is gebouwd met de Spring Framework en de frontend applicatie is gebouwd met React. FiLoGames is ontworpen om borspel fans andere lokale fans te vinden en daar evenementen mee te plannen. Zoek makkelijk op bestaande evenementen met een specifiek spel.
 * Benodigdheden (met minimale versienummers)
-** Met Docker
+** Bij gebruik van Docker
 - Docker
   + Minimale versie: 29.3.0
-** Zonder Docker
+** Bij gebruik zonder Docker
 *** Voor de frontend
 - Node.js
   + Minimale versie: 22.15.0
@@ -46,17 +58,12 @@ De FiLoGames web-API is gebouwd met de Spring Framework en de frontend applicati
 Deze applicatie bestaat uit een frontend en een backend applicatie. De frontend applicatie is geschreven in JavaScript en gebouwd met de JavaScript library React. De backend applicatie is geschreven in Java en gebouwd met de Spring Framework.
 * Installatie
 ** Met Docker
-1. Clone deze repository naar jouw eigen systeem.
-2. Installeer Docker.
+1. Installeer Docker.
    - https://www.docker.com/
    - Onder het knopje "Download Docker Desktop", selecteer jouw OS en volg de aangegeven instructies.
-*** Voor de frontend
-1. Pull de Docker image voor de frontend applicatie.
-   - ~docker pull benssoon/fi-lo-games~
-2. Draai de applicatie met Docker.
-   - ~docker run -p 3000:3000 benssoon/fi-lo-games~
-*** Voor de backend
-
+2. Download [[docker-compose.yml][docker-compose.yml]] van deze repository.
+3. In de terminal, vanuit de map waar je docker-compose.yml heb geplaatst, voer de commando ~docker compose up~ uit.
+4. Open een browser en ga naar [[http://localhost:3000][localhost:3000]].
 ** Zonder Docker
 1. Clone deze repository naar jouw eigen systeem.
 2. Installeer indien nodig PostgreSQL.
