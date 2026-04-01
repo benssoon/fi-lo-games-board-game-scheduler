@@ -1,9 +1,13 @@
 services:
-  fi-lo-games-api:
-    image: 'fi-lo-games-api:latest'
-    build:
-      context: backend/fi-lo-games
-    container_name: fi-lo-games-api
+  frontend:
+    image: 'benssoon/fi-lo-games-frontend:latest'
+    container_name: fi-lo-front
+    ports:
+      - "3000:3000"
+
+  backend:
+    image: 'benssoon/fi-lo-games-backend:latest'
+    container_name: fi-lo-back
     depends_on:
       - db
     environment:
@@ -17,15 +21,7 @@ services:
 
   db:
     image: 'postgres:14.22-alpine'
-    container_name: db
+    container_name: fi-lo-db
     environment:
       - POSTGRES_USER=compose-postgres
       - POSTGRES_PASSWORD=compose-postgres
-
-  fi-lo-games-frontend:
-    image: 'fi-lo-games-frontend:latest'
-    build:
-      context: frontend
-    container_name: fi-lo-games-frontend
-    ports:
-      - "3000:3000"
